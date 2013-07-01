@@ -1,0 +1,72 @@
+@import "compass/css3";
+
+$box_width: 16px;
+$box_height: 16px;
+$box_margin: 6px;
+
+.moly_popularities_panel {
+    position: absolute;
+    width: auto;
+    height: $box_height;
+    padding: 2px 3px;
+    margin: 0px;
+    border: solid 1px #DDD;
+    background-color: #FFF;
+    opacity: 0.96;
+    @include border-radius(4px, 4px);
+    @include box-shadow(rgba(#000, 0.02) 1px 1px 2px);
+    
+    .moly_popularities_box {
+        min-width: $box_width;
+        height: $box_height;
+        float: left;
+        margin: {
+            left: $box_margin / 2;
+            right: $box_margin / 2;
+        }
+
+        div {
+            min-width: $box_width;
+            height: $box_height;
+            
+        }
+        :first-child {
+            background-size: auto $box_height;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.30;
+            position: absolute;
+            z-index: 0;
+        }
+        :last-child {
+            text-align: center;
+            line-height: $box_height;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: normal;
+            color: #222;
+            @include text-shadow(rgba(#FFF, 0.96) 0px 0px 2px);
+            z-index: 1;
+            position: absolute;
+        }
+    }
+    .moly_popularities_box:first-child {
+        margin-left: 0px;
+    }
+    .moly_popularities_box:last-child {
+        margin-right: 0px;
+    }
+
+    .moly_popularities_facebook_like :first-child{
+        background-image: url('chrome-extension://__MSG_@@extension_id__/images/facebook_like.png');
+    }
+    .moly_popularities_facebook_share :first-child{
+        background-image: url('chrome-extension://__MSG_@@extension_id__/images/facebook_share.png');
+    }
+    .moly_popularities_twitter_tweet :first-child{
+        background-image: url('chrome-extension://__MSG_@@extension_id__/images/twitter_tweet.png');
+    }
+    .moly_popularities_hatena_bookmark :first-child{
+        background-image: url('chrome-extension://__MSG_@@extension_id__/images/hatena_bookmark.png');
+    }
+}
