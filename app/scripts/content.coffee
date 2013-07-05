@@ -169,10 +169,12 @@ class Popularities
                 for url in _.intersection(urls, _.keys(@memo[type]))
                     for cb in popularity_requests[url]
                         cb(@memo[type][url])
+
+            urls = _.keys(popularity_requests)
+            urls.reverse()
                         
             getFacebookPopularities = =>
                 type = 'getFacebookPopularities'
-                urls = _.keys(popularity_requests)
                 dispatchMemo(type, urls)
                 chrome.runtime.sendMessage {
                     type: type
@@ -187,7 +189,6 @@ class Popularities
             getFacebookPopularities() if _settings.do_show_facebook_like or _settings.do_show_facebook_share
 
             getPopularity = (type) =>
-                urls = _.keys(popularity_requests)
                 dispatchMemo(type, urls)
                 for url in _.difference(urls, _.keys(@memo[type]))
                     chrome.runtime.sendMessage {
